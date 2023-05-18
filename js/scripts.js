@@ -6,7 +6,12 @@ let pokemonList = [
     {name: 'Beedrill', height: 1, type: ['bug', 'poison']}
 ];
 
+// Create a list of Pokemon using a for loop (+ conditional)
 for (let i=0; i < pokemonList.length; i++) {
-    document.write('<li>' + pokemonList[i].name + ' ' + '(height: ' + pokemonList[i].height + ')' + '</li>'); 
+    if (pokemonList[i].height < 1.6) {
+        document.write('<li>' + pokemonList[i].name + ' ' + '(height: ' + pokemonList[i].height + ')' + '</li>');
+    } else {
+        document.write('<li>' + pokemonList[i].name + ' ' + '(height: ' + pokemonList[i].height + ')' + ' - Wow, thats big!' + '</li>'); 
+    }   
 }
 
