@@ -5,7 +5,16 @@ let pokemonRepository = (function () {
         {name: 'Horsea', height: 0.4, type: 'water'},
         {name: 'Charizard', height: 1.7, type: ['fire', 'flying']},
         {name: 'Beedrill', height: 1, type: ['bug', 'poison']}
-]})();
+];
+    return {
+        add: function(pokemon) {
+            pokemonList.add(pokemon);        
+        },
+        getAll: function() {
+            return pokemonList;
+        }
+    };          
+})();
 
 pokemonList.forEach(function(pokemon) {
     if (pokemon.height < 1.6) {
