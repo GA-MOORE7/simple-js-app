@@ -1,4 +1,4 @@
-(function () {
+let pokemonRepository = (function () {
     let pokemonList = [
         {name: 'Pikachu', height: 0.4, type: 'electric'},
         {name: 'Pidgeot', height: 1.5, type: ['normal', 'flying']},
