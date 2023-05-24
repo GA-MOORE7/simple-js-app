@@ -6,15 +6,23 @@ let pokemonRepository = (function () {
         {name: 'Charizard', height: 1.7, type: ['fire', 'flying']},
         {name: 'Beedrill', height: 1, type: ['bug', 'poison']}
 ];
-    return {
-        add: function(pokemon) {
-            pokemonList.add(pokemon);        
-        },
-        getAll: function() {
+    function add(pokemon) {
+            pokemonList.push(pokemon);        
+        }
+
+    function getAll() {
             return pokemonList;
         }
-    };          
+
+        return {
+            add: add,
+            getAll: getAll
+        };          
 })();
+
+// document.write(pokemonRepository.getAll());
+console.log(pokemonRepository.getAll());
+// document.write(pokemonRepository.push({ name: 'Sophie'}));
 
 pokemonList.forEach(function(pokemon) {
     if (pokemon.height < 1.6) {
