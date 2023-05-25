@@ -22,12 +22,13 @@ let pokemonRepository = (function () {
 
 })();
 
-document.write(pokemonRepository.getAll());
-console.log(pokemonRepository.getAll());
-// document.write(pokemonRepository);
-// document.write(pokemonRepository.add({ name: 'Sophie'}));
+// Test of return functions inside IIFE
+// console.log(pokemonRepository.getAll());
+// pokemonRepository.add({ name: 'Squirtel'}));
+// console.log(pokemonRepository.getAll());
 
-pokemonList.forEach(function (pokemon) {
+// forEach loop
+pokemonRepository.getAll().forEach(function (pokemon) {
     if (pokemon.height < 1.6) {
         document.write('<li>' + pokemon.name + ' ' + '(height: ' + pokemon.height + ')' + '</li>');
     } else {
