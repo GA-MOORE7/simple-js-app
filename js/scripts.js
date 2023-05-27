@@ -43,7 +43,7 @@ let pokemonRepository = (function () {
 
 // Test of return functions inside IIFE
 // console.log(pokemonRepository.getAll());
-// pokemonRepository.add({ name: 'Squirtle', height: 2});
+pokemonRepository.add({ name: 'Squirtle'});
 // console.log(pokemonRepository.getAll());
 
 // forEach loop
