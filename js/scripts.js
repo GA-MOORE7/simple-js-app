@@ -12,7 +12,7 @@ let pokemonRepository = (function () {
         return pokemonList;
     }
     function add (pokemon) { 
-        if (typeof pokemon.name === "string") {
+        if (typeof pokemon.name === "string" && Object.keys(pokemonList)) {
         pokemonList.push(pokemon)        
     }
 }   
@@ -26,7 +26,7 @@ let pokemonRepository = (function () {
 
 // Test of return functions inside IIFE
 // console.log(pokemonRepository.getAll());
-pokemonRepository.add({ name: 'Squirtle'});
+pokemonRepository.add({ name: 'Squirtle', height: 2});
 // console.log(pokemonRepository.getAll());
 
 // forEach loop
