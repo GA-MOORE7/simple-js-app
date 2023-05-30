@@ -1,12 +1,8 @@
 let pokemonRepository = (function() {
 
-    let pokemonList = [
-        {name: 'Pikachu', height: 0.4, types: ['electric']},
-        {name: 'Pidgeot', height: 1.5, types: ['normal', 'flying']},
-        {name: 'Horsea', height: 0.4, types: ['water']},
-        {name: 'Charizard', height: 1.7, types: ['fire', 'flying']},
-        {name: 'Beedrill', height: 1, types: ['bug', 'poison']}
-    ];
+    let pokemonList = [];
+
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150'; 
 
     function getAll() {
         return pokemonList;
@@ -14,9 +10,8 @@ let pokemonRepository = (function() {
     function add(pokemon) { 
         if (
           typeof pokemon === "object" && 
-          'name' in pokemon &&
-          'height' in pokemon &&
-          'types' in pokemon
+          'name' in pokemon //&&
+          //'detailsUrl' in pokemon
         ) {
           pokemonList.push(pokemon)
         } else {
@@ -24,8 +19,11 @@ let pokemonRepository = (function() {
         }        
     }
 
-    function showDetails(event) {
-        console.log(event.target.innerText);
+    function showDetails(item) {
+        pokemonRepository.loadDetails(item).then(function() 
+        {
+          console.log(item);  
+        });        
     }
 
 // Pokemon list with buttons
@@ -38,23 +36,60 @@ let pokemonRepository = (function() {
         listItem.appendChild(button);
         container.appendChild(listItem);
         //Event listener with click functionality
-        button.addEventListener('click', showDetails);        
-    }      
+        button.addEventListener('click', function(event) {
+            showDetails(pokemon);
+        });        
+    }
+
+    function loadList() {
+        return fetch(apiUrl).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            json.results.forEach(function (item) {
+                let pokemon = {
+                    name: item.name,
+                    detailsUrl: item.url
+                };
+                add(pokemon);
+                console.log(pokemon);
+            });
+        }).catch(function (e) {
+            console.error(e);
+        })
+    }
+    
+    function loadDetails(item) {
+        let url = item.detailsUrl;
+        return fetch(url).then(function (response) {
+            return response.json();
+        }).then(function (details) {
+            item.imageUrl = details.sprites.front_default;
+            item.height = details.height;
+            item.types = details.types;
+        }).catch(function (e) {
+            console.error(e);
+        });
+    }
 
     return {
         getAll: getAll,
-        add: add, 
+        add: add,
+        loadList: loadList,
+        loadDetails: loadDetails, 
         addListItem: addListItem,
-        showDetails: showDetails             
+        showDetails: showDetails           
     };  
 })();
 
 // Test of return functions inside IIFE
 // console.log(pokemonRepository.getAll());
-pokemonRepository.add({ name: 'Squirtle', height: 1, types: ['poop']});
+// pokemonRepository.add({ name: 'Squirtle', height: 1, types: ['poop']});
 // console.log(pokemonRepository.getAll());
 
+
 // forEach loop
-pokemonRepository.getAll().forEach(function(pokemon) {
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon){
     pokemonRepository.addListItem(pokemon);      
+  });
 });
