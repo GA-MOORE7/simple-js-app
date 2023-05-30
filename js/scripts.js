@@ -24,8 +24,8 @@ let pokemonRepository = (function() {
         }        
     }
 
-    function showDetails(pokemon) {
-        console.log(pokemon);
+    function showDetails(event) {
+        console.log(event.target.innerText);
     }
 
 // Pokemon list with buttons
