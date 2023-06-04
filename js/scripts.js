@@ -1,5 +1,5 @@
 let pokemonRepository = (function() {
-
+    let modalContainer = document.querySelector('#modal-container');
     let pokemonList = [];
 
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150'; 
@@ -19,10 +19,57 @@ let pokemonRepository = (function() {
         }        
     }
 
+    /* Create a showModal function */
+    function showModal(title, text) {
+        // let modalContainer = document.querySelector('#modal-container');
+        modalContainer.innerHTML = '';
+        let modal = document.createElement('div');
+        modal.classList.add('modal');
+
+        let closeButtonElement = document.createElement('button');
+        closeButtonElement.classList.add('modal-close');
+        closeButtonElement.innerText = 'Close';
+        closeButtonElement.addEventListener('click', hideModal)
+
+        let titleElement = document.createElement('h1');
+        titleElement.innerText = title;
+
+        let contentElement = document.createElement('p');
+        contentElement.innerText = text;
+
+        modal.appendChild(closeButtonElement);
+        modal.appendChild(titleElement);
+        modal.appendChild(contentElement);
+        modalContainer.appendChild(modal);
+        
+        modalContainer.classList.add('is-visible');
+      }
+      
+    function hideModal() {
+        // let modalContainer = document.querySelector('#modal-container');
+        modalContainer.classList.remove('is-visible');
+    }
+
+    window.addEventListener('keydown', (e) => {
+        // let modalContainer = document.querySelector('#modal-container');
+        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+            hideModal();
+        }
+    });
+
+    // let modalContainer = document.querySelector('#modal-container');
+    modalContainer.addEventListener('click', (e) => {
+        let target = e.target;
+        if (target === modalContainer) {
+            hideModal();
+        }
+    });
+
     function showDetails(item) {
         pokemonRepository.loadDetails(item).then(function() 
         {
-          console.log(item);  
+          console.log(item);
+          showModal('Modal title', 'This is the modal content!');  
         });        
     }
 
