@@ -67,9 +67,29 @@ body {
 }
 
 .modal h1 {
-  margin-top: 0;
+  text-align: center;
 }
 
 .modal p {
-  margin-bottom: 0;
+  text-align: center;
 }
+
+.modal img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; 
+  width: 50%;
+}
+
+ul {
+  text-align: center;
+  list-style-type: none;
+}
+
+h1 {
+  text-align: center;
+}
+
+
+
+

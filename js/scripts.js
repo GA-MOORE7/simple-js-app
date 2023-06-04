@@ -20,7 +20,7 @@ let pokemonRepository = (function() {
     }
 
     /* Create a showModal function */
-    function showModal(title, text) {
+    function showModal(title, text, image) {
         // let modalContainer = document.querySelector('#modal-container');
         modalContainer.innerHTML = '';
         let modal = document.createElement('div');
@@ -37,9 +37,14 @@ let pokemonRepository = (function() {
         let contentElement = document.createElement('p');
         contentElement.innerText = text;
 
+        let imageElement = document.createElement('img');
+        imageElement.src = image;
+
+
         modal.appendChild(closeButtonElement);
         modal.appendChild(titleElement);
-        modal.appendChild(contentElement);
+        modal.appendChild(imageElement);
+        modal.appendChild(contentElement);        
         modalContainer.appendChild(modal);
         
         modalContainer.classList.add('is-visible');
@@ -69,7 +74,7 @@ let pokemonRepository = (function() {
         pokemonRepository.loadDetails(item).then(function() 
         {
           console.log(item);
-          showModal('Modal title', 'This is the modal content!');  
+          showModal(item.name, `Height: ${item.height}`, item.imageUrl);  
         });        
     }
 
