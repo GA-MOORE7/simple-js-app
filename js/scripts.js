@@ -82,9 +82,18 @@ let pokemonRepository = (function() {
     function addListItem(pokemon) {
         let container = document.querySelector('.pokemon-list');
         let listItem = document.createElement('li');
+
+        // task 10 (step 2)
+        listItem.classList.add('list-group-item');
+        
         let button = document.createElement('button');
         button.innerText = pokemon.name;
         button.classList.add('button-class');
+
+        // task 10 (step 3)
+        button.classList.add('btn');
+        button.classList.add('btn-primary');
+
         listItem.appendChild(button);
         container.appendChild(listItem);
         //Event listener with click functionality
