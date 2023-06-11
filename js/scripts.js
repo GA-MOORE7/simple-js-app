@@ -7,6 +7,7 @@ let pokemonRepository = (function() {
     function getAll() {
         return pokemonList;
     }
+    
     function add(pokemon) { 
         if (
           typeof pokemon === "object" && 
@@ -19,50 +20,83 @@ let pokemonRepository = (function() {
         }        
     }
 
+    // Create a showModal function using Bootstrap
+        function showModal(item) {
+            
+            let modalBody = $('.modal-body');
+            let modalTitle = $('.modal-title');
+            let modalHeader = $('.modal-header');
+
+            modalTitle.empty();
+            modalBody.empty();
+
+            let nameElement = $("<h1>" + item.name + "</h1>"); 
+
+            let imageElement = $('<img class="modal-img style="width:50%">');
+            imageElement.attr("src", item.imageUrl);
+            
+            // let imageElementBack = $('<img class="modal-img" style="width:50%">');
+            // imageElementBack.attr("src", item.imageUrlBack);
+            
+            let heightElement = $("<p>" + "height : " + item.height + "</p>");
+
+            let weightElement = $("<p>" + "weight : " + item.weight + "</p>");
+            
+            let typesElement = $("<p>" + "types : " + item.types + "</p>");
+
+            let abilitiesElement = $("<p>" + "abilities : " + item.abilities + "</p>"); 
+
+            modalTitle.append(nameElement);
+            modalBody.append(imageElement);
+            // modalBody.append(imageElementBack);
+            modalBody.append(heightElement);
+            modalBody.append(weightElement);
+            modalBody.append(typesElement);
+            modalBody.append(abilitiesElement); 
+                
+        };
+
     /* Create a showModal function */
-    function showModal(title, text, image) {
-        // let modalContainer = document.querySelector('#modal-container');
-        modalContainer.innerHTML = '';
-        let modal = document.createElement('div');
-        modal.classList.add('modal');
+    // function showModal(title, text, image) {
+    
+    //     modalContainer.innerHTML = '';
+    //     let modal = document.createElement('div');
+    //     modal.classList.add('modal');
 
-        let closeButtonElement = document.createElement('button');
-        closeButtonElement.classList.add('modal-close');
-        closeButtonElement.innerText = 'Close';
-        closeButtonElement.addEventListener('click', hideModal)
+    //     let closeButtonElement = document.createElement('button');
+    //     closeButtonElement.classList.add('modal-close');
+    //     closeButtonElement.innerText = 'Close';
+    //     closeButtonElement.addEventListener('click', hideModal)
 
-        let titleElement = document.createElement('h1');
-        titleElement.innerText = title;
+    //     let titleElement = document.createElement('h1');
+    //     titleElement.innerText = title;
 
-        let contentElement = document.createElement('p');
-        contentElement.innerText = text;
+    //     let contentElement = document.createElement('p');
+    //     contentElement.innerText = text;
 
-        let imageElement = document.createElement('img');
-        imageElement.src = image;
+    //     let imageElement = document.createElement('img');
+    //     imageElement.src = image;
 
 
-        modal.appendChild(closeButtonElement);
-        modal.appendChild(titleElement);
-        modal.appendChild(imageElement);
-        modal.appendChild(contentElement);        
-        modalContainer.appendChild(modal);
+    //     modal.appendChild(closeButtonElement);
+    //     modal.appendChild(titleElement);
+    //     modal.appendChild(imageElement);
+    //     modal.appendChild(contentElement);        
+    //     modalContainer.appendChild(modal);
         
-        modalContainer.classList.add('is-visible');
-      }
+    //     modalContainer.classList.add('is-visible');
+    //   }
       
     function hideModal() {
-        // let modalContainer = document.querySelector('#modal-container');
         modalContainer.classList.remove('is-visible');
     }
 
     window.addEventListener('keydown', (e) => {
-        // let modalContainer = document.querySelector('#modal-container');
         if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
             hideModal();
         }
     });
 
-    // let modalContainer = document.querySelector('#modal-container');
     modalContainer.addEventListener('click', (e) => {
         let target = e.target;
         if (target === modalContainer) {
@@ -74,7 +108,7 @@ let pokemonRepository = (function() {
         pokemonRepository.loadDetails(item).then(function() 
         {
           console.log(item);
-          showModal(item.name, `Height: ${item.height}`, item.imageUrl);  
+          showModal(item);  
         });        
     }
 
@@ -112,7 +146,6 @@ let pokemonRepository = (function() {
                     detailsUrl: item.url
                 };
                 add(pokemon);
-                //console.log(pokemon);
             });
         }).catch(function (e) {
             console.error(e);
@@ -127,6 +160,10 @@ let pokemonRepository = (function() {
             item.imageUrl = details.sprites.front_default;
             item.height = details.height;
             item.types = details.types;
+            item.weight = details.weight;
+            item.abilities = details.abilities;
+            // item.imageUrlBack = details.imageUrlBack;
+            // item.imageElementFront = details.imageUrlFront;
         }).catch(function (e) {
             console.error(e);
         });
@@ -138,14 +175,9 @@ let pokemonRepository = (function() {
         loadList: loadList,
         loadDetails: loadDetails, 
         addListItem: addListItem,
-        showDetails: showDetails           
+        showDetails: showDetails,         
     };  
 })();
-
-// Test of return functions inside IIFE
-// console.log(pokemonRepository.getAll());
-// pokemonRepository.add({ name: 'Squirtle', height: 1, types: ['poop']});
-// console.log(pokemonRepository.getAll());
 
 
 // forEach loop
