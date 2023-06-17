@@ -42,13 +42,7 @@ let pokemonRepository = (function() {
 
             let weightElement = $("<p>" + "weight : " + item.weight + "</p>");
             
-            pokemonTypes = item.types;
-            for (let i = 0; i < pokemonTypes.length; i++) {
-                if (pokemonTypes.hasOwnProperty("type") === true){
-                    let typesElement = $("<p>" + "types : " + type["name"] + "</p>");
-                    return typesElement;  
-                }
-            }
+            let typesElement = $("<p>" + "types : " + item.types + "</p>");
             
             let abilitiesElement = $("<p>" + "abilities : " + item.abilities + "</p>"); 
 
