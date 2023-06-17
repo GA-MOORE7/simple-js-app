@@ -11,14 +11,15 @@
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
-    background-color: white;
+    background-color: #CCD5AE;
     color: black;
-    border: 2px solid #4caf50; 
+    border: 2px solid #c1caa3; 
 }
 
 html, 
 body {
   font-family: Arial, sans-serif;
+  background-color: #FEFAE0; 
 }
 
 .modal h1 {
@@ -27,6 +28,18 @@ body {
 
 .modal p {
   text-align: center;
+}
+
+.modal-header {
+  background-color: #579BB1;
+}
+
+.modal-body {
+  background-color: #ECE8DD;
+}
+
+.modal-footer {
+  background-color: #E1D7C6; 
 }
 
 .modal img {
@@ -44,6 +57,15 @@ ul {
 h1 {
   text-align: center;
 }
+
+.list-group-item {
+  background-color: #E9EDC9;
+}
+
+#navbarNav, .navbar-brand, .navbar {
+  background-color: #FAEDCD;  
+}
+
 
 
 
