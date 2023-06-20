@@ -48,16 +48,22 @@ let pokemonRepository = (function() {
             modalBody.append(heightElement);
             modalBody.append(weightElement);
 
+            let pokemonTypes = [];
             item.types.forEach(item => {
-                let typesElement = $("<p>" + "types : " + item.type.name + "</p>");                
-                modalBody.append(typesElement);
+                pokemonTypes.push(item.type.name);                             
             })
 
+            let typesElement = $("<p>" + "types : " + pokemonTypes.join(', ') + "</p>");
+            modalBody.append(typesElement);
+
+            let pokemonAbilities = [];
             item.abilities.forEach(item => {
-                let abilitiesElement = $("<p>" + "abilities : " + item.ability.name + "</p>");                 
+                pokemonAbilities.push(item.ability.name);
+            })  
+            
+            let abilitiesElement = $("<p>" + "abilities : " + pokemonAbilities.join(', ') + "</p>");                 
                 modalBody.append(abilitiesElement); 
-            })       
-                    
+
         };
       
     function hideModal() {
