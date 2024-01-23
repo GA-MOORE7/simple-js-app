@@ -1,20 +1,42 @@
-# simple-js-app
+# Pokemon Database Web App
 
-Project description:
+#### Welcome to the Pokemon Database Web App repository! This project displays my skills in web development, including HTML, CSS, JavaScript, and the integration of external APIs. In this web app, users can explore a list of Pokemon and view detailed information about each Pokemon.
 
-1. This is a Pokemon app on which users can learn more about various pokemon.
+## Technologies
 
-How to get the project running:
+- #### HTML: Markup language for structuring the web page.
 
-1. open the app
-2. scroll to - and click on - any pokemon button
-3. learn more about the pokemon
+- #### CSS: Styling to enhance the visual appeal and responsiveness.
 
-Project dependencies:
+- #### JavaScript: Programming language for interactive and dynamic features.
 
-1. Bootstrap
-2. JQuery
+- #### Bootstrap: Front-end framework for a responsive and consistent design.
 
-Which API the project uses
+- #### Fetch API: Used to make asynchronous requests to the Pokemon API.
 
-1. 'https://pokeapi.co/api/v2/pokemon/?limit=150'
+- #### Promises: Handling asynchronous operations for a smoother user experience.
+
+## Key Features
+
+- #### Pokemon List: Display a list of Pokemon with their names and images.
+
+- #### Details Modal: View detailed information about a selected Pokemon.
+
+- #### Responsive Design: The web app is designed to work seamlessly on various devices.
+
+## Project dependencies:
+
+- #### Bootstrap
+- #### JQuery
+
+## Which API the project uses
+
+#### 1. 'https://pokeapi.co/api/v2/pokemon/?limit=150'
+
+## Test it Yourself
+
+#### 1. Clone this Github project into a new folder: https://github.com/GA-MOORE7/simple-js-app.git
+
+#### 2. Open the index.html file in your preferred web browser.
+
+#### 3. Explore the Pokemon Database web app!
