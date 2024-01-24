@@ -26,7 +26,7 @@
 
 ## Link to Live Site:
 
-#### GA-MOORE7.github.io/simple-js-app/
+#### https://ga-moore7.github.io/simple-js-app/
 
 ## Project dependencies:
 
