@@ -24,6 +24,10 @@
 
 - #### Responsive Design: The web app is designed to work seamlessly on various devices.
 
+## Link to Live Site:
+
+#### GA-MOORE7.github.io/simple-js-app/
+
 ## Project dependencies:
 
 - #### Bootstrap
